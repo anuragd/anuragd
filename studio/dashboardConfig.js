@@ -30,7 +30,7 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/anuragd/sanity-nextjs-landing-pages',
+            value: 'https://github.com/anuragd/anuragd',
             category: 'Code'
           },
           {title: 'Frontend', value: 'https://anuragd.netlify.app', category: 'apps'}

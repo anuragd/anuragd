@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import page from './documents/page';
+import project from './documents/project';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 
@@ -23,6 +24,8 @@ import hero from './objects/hero';
 import imageSection from './objects/imageSection';
 import mailchimp from './objects/mailchimp';
 import textSection from './objects/textSection';
+import heroText from './objects/heroText';
+import portfolioSection from './objects/portfolio-section';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,11 +37,14 @@ export default createSchema({
     embedHTML,
     figure,
     hero,
+    heroText,
+    portfolioSection,
     imageSection,
     internalLink,
     link,
     mailchimp,
     page,
+    project,
     portableText,
     route,
     simplePortableText,

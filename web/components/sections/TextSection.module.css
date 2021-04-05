@@ -11,7 +11,7 @@
 
 .article {
   width: 100%;
-  max-width: var(--width-small);
+  max-width: var(--width-large);
   margin: 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;

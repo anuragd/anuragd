@@ -1,0 +1,39 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.root {
+    width: 100%;
+    max-width: var(--width-large);
+    padding: 0 1.5em;
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.project_container {
+    padding: 1rem;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem;
+    
+    @nest & > .project_title {
+        font-size: var( --font-large-size);
+    }
+    
+    @nest & > .client {
+        font-size: var( --font-base-size);
+    }
+
+    @nest & > .overview {
+        font-size: var( --font-small-size);
+        max-width: var(--width-small);
+        margin-top: 0.5em;
+    }
+}
+
+.loader {
+    padding: 1rem;
+    width: 100%;
+}

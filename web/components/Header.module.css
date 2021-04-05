@@ -6,7 +6,7 @@
   color: var(--color-black, #000);
   display: flex;
   margin: 0 auto;
-  max-width: var(--width-small);
+  max-width: var(--width-large);
 }
 
 .root a {
@@ -22,8 +22,9 @@
   padding: 0;
 
   @nest & > a {
-    display: block;
+    display: flex;
     padding: 1.5em;
+    align-items: center;
 
     @supports (padding-top: env(safe-area-inset-top)) {
       padding-left: calc(env(safe-area-inset-left) + 1.5rem);
@@ -35,6 +36,7 @@
     width: auto;
     color: inherit;
     vertical-align: top;
+    margin-right: 1rem;
   }
 
   @nest & svg path {

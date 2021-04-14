@@ -33,6 +33,11 @@ export default {
             }
         },
         {
+            name: "teamSize",
+            type: "number",
+            title: "Team Size"
+        },
+        {
             name: "heroImage",
             title: "Hero Image",
             type: "image",

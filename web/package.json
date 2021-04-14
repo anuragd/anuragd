@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "sanity-nextjs-landing-pages-web",
+  "name": "anuragd",
   "version": "1.0.12",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Anurag Dutta",
   "scripts": {
     "dev": "next",
     "build": "next build && next export && node exportSitemap.js",

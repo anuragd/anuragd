@@ -7,6 +7,7 @@ import groq from 'groq'
 import SimpleBlockContent from '../SimpleBlockContent'
 import project from '../../../studio/schemas/documents/project'
 import { render } from 'react-dom'
+import FullProjectRender from '../FullProjectRender'
 
 const builder = imageUrlBuilder(client)
 const roleMap = {
@@ -51,44 +52,27 @@ class PortfolioSection extends React.Component {
   render() {
     let {projects, focusProject, position} = this.state
     return(
-      <div className={styles.root}>
-        <div className={focusProject?styles.focus_project_container:styles.hidden_content} style={focusProject && {backgroundImage: `url(${focusProject.imageUrl})`, backgroundColor:"#"+focusProject.baseColor}}>
-            <div className={styles.overlay_close} onClick={e => this.setState({focusProject:null})}>Close</div>
-            {focusProject &&
-              <div className="test">
-              <div className={styles.project_title}>{focusProject.title}</div>
-              <div className={styles.client}>{focusProject.client}</div>
-              <div className={styles.overview}>{focusProject.overview}</div>
-              <div className={styles.project_snapshot}>
-                <div className={styles.snapshot_item}>
-                  <div className={styles.snapshot_item_label}>Role</div>
-                  <div className={styles.snapshot_item_value}>{focusProject.role.map(role => <span>{roleMap[role]}</span>)}</div>
-                </div>
-                <div className={styles.snapshot_item}>
-                  <div className={styles.snapshot_item_label}>Team Size</div>
-                  <div className={styles.snapshot_item_value}>{focusProject.teamSize}</div>
-                </div>
-              </div>
-              </div>
-            }
-        </div>
+      <div className={focusProject?styles.hideScroll:styles.root}>
+        {focusProject && <FullProjectRender project={focusProject} closeProject={e => this.setState({focusProject:null})}/>}
         {!projects && <div className={styles.loader}>Loading...</div>}
         {projects && projects.map(project =>
           <div  key={project._id} 
                 className={styles.project_container} 
-                style={project.imageUrl && {backgroundImage: `url(${project.imageUrl})`, backgroundColor:"#"+project.baseColor}}
+                style={{backgroundColor:"#"+project.baseColor}}
                 onClick={e => this.clickHandler(e,project)}>
-            <div className={styles.project_title}>{project.title}</div>
-            <div className={styles.client}>{project.client}</div>
-            <div className={styles.overview}>{project.overview}</div>
-            <div className={styles.project_snapshot}>
-              <div className={styles.snapshot_item}>
-                <div className={styles.snapshot_item_label}>Role</div>
-                <div className={styles.snapshot_item_value}>{project.role.map(role => <span>{roleMap[role]}</span>)}</div>
-              </div>
-              <div className={styles.snapshot_item}>
-                <div className={styles.snapshot_item_label}>Team Size</div>
-                <div className={styles.snapshot_item_value}>{project.teamSize}</div>
+            <div className={styles.inner_container} style={project.imageUrl && {backgroundImage: `url(${project.imageUrl})`, backgroundColor:"#"+project.baseColor}}>
+              <div className={styles.project_title}>{project.title}</div>
+              <div className={styles.client}>{project.client}</div>
+              <div className={styles.overview}>{project.overview}</div>
+              <div className={styles.project_snapshot}>
+                <div className={styles.snapshot_item}>
+                  <div className={styles.snapshot_item_label}>Role</div>
+                  <div className={styles.snapshot_item_value}>{project.role.map((role,key) => <span key={key}>{roleMap[role]}</span>)}</div>
+                </div>
+                <div className={styles.snapshot_item}>
+                  <div className={styles.snapshot_item_label}>Team Size</div>
+                  <div className={styles.snapshot_item_value}>{project.teamSize}</div>
+                </div>
               </div>
             </div>
           </div>  

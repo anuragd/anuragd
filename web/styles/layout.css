@@ -18,6 +18,9 @@ body,
 :global(#__next),
 :global(.container) {
   height: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 :global(.content) {

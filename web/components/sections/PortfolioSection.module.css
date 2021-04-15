@@ -3,27 +3,37 @@
 
 .root {
     width: 100%;
-    max-width: var(--width-large);
-    padding: 0 1.5em;
+    padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hideScroll {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 100vh;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .project_container {
-    padding: 1rem;
-    background-position-x: right;
-    background-position-y: bottom;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    margin-bottom: 2rem;
     width: 100%;
-    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: all 200ms ease-in;
-
+    align-items: center;
     @nest & > .in_focus {
         transform: scale(-8);
     }
@@ -36,10 +46,22 @@
         font-size: var( --font-base-size);
     }
 
-    @nest & > .overview {
+    & .overview {
         font-size: var( --font-small-size);
-        max-width: var(--width-small);
+        max-width: 60%;
         margin-top: 0.5em;
+    }
+    & .inner_container {
+        min-height: 225px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: var(--width-large);
+        background-position-x: right;
+        background-position-y: bottom;
+        background-size: 50%;
+        background-repeat: no-repeat;
     }
 }
 
@@ -68,41 +90,6 @@
     }
 }
 
-.focus_project_container {
-    padding: 1rem;
-    background-position-x: right;
-    background-position-y: bottom;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right:0;
-    opacity: 1;
-    transform: scale(700%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: top 400ms ease-out, bottom 400ms ease-out, opacity 500ms ease-out;
-    transform-origin: center center;
-}
-.hidden_content {
-    position: fixed;
-    transition: top 400ms ease-out, bottom 400ms ease-out, opacity 500ms ease-out;
-    transform-origin: center center;
-    top: 50%;
-    bottom: 50%;
-    right: 25%;
-    left: 25%;
-    opacity: 0;
-}
-
-.overlay_close {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-}
 
 .loader {
     padding: 1rem;
